@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #0a0e1a;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --card-bg: #1a1f35;
+    --accent: #3b82f6;
+    --radius: 16px;
+    --shadow: 0 8px 30px rgba(59, 130, 246, 0.1);
+  }
+
+  * {
+    @apply transition-[background-color,color,border] duration-300 ease-in-out;
+  }
+
+  body {
+    @apply bg-custom-bg text-custom-text font-['Inter',sans-serif] leading-normal;
+    background-image: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  }
+
+  p {
+    @apply text-custom-muted;
+  }
+
+  input::placeholder {
+    @apply text-custom-muted opacity-60;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1200px] mx-auto px-6;
+  }
+
+  .fade-animation {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .hero-animate {
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .team-card {
+    opacity: 0;
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+
+  .grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .grid-columns-3 {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  @media (max-width: 768px) {
+    .grid-columns-3 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .btn {
+    @apply inline-block py-3 px-6 rounded-custom no-underline font-semibold cursor-pointer;
+    @apply transition-all duration-300 ease-in-out;
+    @apply transform hover:scale-105 active:scale-95;
+  }
+
+  .btn-primary {
+    @apply text-white shadow-lg;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    filter: brightness(1.1);
+  }
+
+  .btn-outline {
+    @apply border-2 border-custom-accent text-custom-accent;
+    @apply hover:bg-custom-accent hover:text-white;
+    background: rgba(59, 130, 246, 0.05);
+  }
+
+  .btn-outline:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+
+  .section {
+    @apply py-[30px];
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+}

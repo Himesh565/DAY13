@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply m-0 flex items-center justify-center min-w-[320px] min-h-screen;
+    @apply bg-custom-bg text-custom-text;
+    @apply font-sans leading-relaxed;
+  }
+
+  h1 {
+    @apply text-5xl leading-tight;
+  }
+}
+
+@layer components {
+  a {
+    @apply font-medium text-[#646cff] no-underline;
+  }
+
+  a:hover {
+    @apply text-[#535bf2];
+  }
+
+  button {
+    @apply rounded-lg border border-transparent px-5 py-2.5 text-base font-medium;
+    @apply bg-[#1a1a1a] cursor-pointer transition-[border-color] duration-[250ms];
+    @apply font-inherit;
+  }
+
+  button:hover {
+    @apply border-[#646cff];
+  }
+
+  button:focus,
+  button:focus-visible {
+    @apply outline outline-4 outline-[-webkit-focus-ring-color];
+  }
+
+  /* Fade in animation for FAQ answers */
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    @apply text-[#213547] bg-white;
+  }
+
+  a:hover {
+    @apply text-[#747bff];
+  }
+
+  button {
+    @apply bg-[#f9f9f9];
+  }
+}

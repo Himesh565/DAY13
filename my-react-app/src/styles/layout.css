@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .site-header {
+    @apply sticky top-0 z-[100];
+    background: rgba(10, 14, 26, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 1rem 0;
+  }
+
+  .header-inner {
+    @apply flex justify-between items-center;
+  }
+
+  .brand {
+    @apply flex items-center gap-3 text-2xl font-extrabold no-underline;
+    @apply transition-all duration-300 ease-out;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .brand:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+
+  .logo {
+    @apply h-12 w-12;
+    @apply transition-transform duration-300;
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
+  }
+
+  .brand:hover .logo {
+    transform: rotate(360deg) scale(1.1);
+  }
+
+  .site-nav {
+    @apply flex gap-2 items-center;
+  }
+
+  .site-nav a {
+    @apply px-5 py-2.5 no-underline font-semibold text-custom-muted rounded-xl;
+    @apply transition-all duration-300 ease-in-out;
+    @apply relative overflow-hidden;
+    background: rgba(59, 130, 246, 0.05);
+    border: 1px solid transparent;
+  }
+
+  .site-nav a::before {
+    content: '';
+    @apply absolute inset-0 opacity-0;
+    @apply transition-opacity duration-300;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+    z-index: -1;
+  }
+
+  .site-nav a:hover {
+    @apply text-white;
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .site-nav a:hover::before {
+    @apply opacity-100;
+  }
+
+  .site-nav a:active {
+    transform: translateY(0);
+  }
+
+  /* Icon Links with Badges */
+  .nav-icon-link {
+    @apply flex items-center justify-center px-3 py-2 rounded-xl;
+    @apply transition-all duration-300;
+    background: rgba(59, 130, 246, 0.05);
+    border: 1px solid transparent;
+  }
+
+  .nav-icon-link:hover {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .icon-badge-wrapper {
+    @apply relative;
+  }
+
+  .badge {
+    @apply absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold;
+    @apply rounded-full w-5 h-5 flex items-center justify-center;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+  }
+
+  /* Footer Styles */
+  .site-footer {
+    @apply mt-24 pt-16 pb-8 border-t;
+    background: rgba(5, 7, 15, 0.98);
+    border-top: 1px solid rgba(59, 130, 246, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative sheen */
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+  }
+
+  .footer-top-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12;
+  }
+
+  .footer-brand-section {
+    @apply flex flex-col;
+  }
+
+  .footer-desc {
+    @apply text-custom-muted text-sm leading-relaxed;
+  }
+
+  .social-links {
+    @apply flex gap-4 mt-auto;
+  }
+
+  .social-icon {
+    @apply w-10 h-10 rounded-full flex items-center justify-center text-custom-muted;
+    @apply bg-gray-800/50 border border-gray-700/50;
+    @apply transition-all duration-300;
+  }
+
+  .social-icon:hover {
+    @apply bg-blue-600 text-white border-blue-500;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+  }
+
+  .footer-links-section h4 {
+    @apply font-bold text-white text-lg mb-6 relative inline-block;
+  }
+
+  .footer-links-section h4::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 w-12 h-1 bg-blue-600 rounded-full;
+  }
+
+  .footer-links {
+    @apply list-none space-y-3;
+  }
+
+  .footer-links a {
+    @apply text-custom-muted hover:text-blue-400 transition-all duration-200;
+    @apply flex items-center gap-2;
+  }
+
+  .footer-links a:hover {
+    transform: translateX(5px);
+  }
+
+  .footer-newsletter-section h4 {
+    @apply font-bold text-white text-lg mb-6;
+  }
+
+  .newsletter-form {
+    @apply flex flex-col gap-3;
+  }
+
+  .newsletter-input {
+    @apply w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 text-white;
+    @apply focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all;
+  }
+
+  .newsletter-btn {
+    @apply w-full py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold;
+    @apply hover:from-blue-700 hover:to-purple-700 transition-all duration-300;
+    @apply shadow-lg hover:shadow-blue-500/25;
+  }
+
+  .footer-divider {
+    @apply h-px w-full bg-gray-800 my-8;
+  }
+
+  .footer-bottom {
+    @apply flex flex-col md:flex-row justify-between items-center gap-4 text-custom-muted text-sm;
+  }
+
+  .payment-icons {
+    @apply flex gap-3;
+  }
+
+  .payment-badge {
+    @apply px-3 py-1 bg-gray-800 rounded border border-gray-700 text-xs font-semibold text-gray-400;
+  }
+
+  /* New Button Styles */
+  .nav-btn {
+    @apply px-5 py-2.5 rounded-xl font-semibold text-white no-underline inline-block transition-all duration-300 shadow-lg;
+    border: 1px solid transparent;
+  }
+
+  .nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    filter: brightness(1.1);
+  }
+
+  .nav-btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  }
+
+  .nav-btn-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+  }
+}
